@@ -13,26 +13,22 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("restart"):
 		get_tree().reload_current_scene()
 
-func on_mask_switched(mask) -> void:
+func on_mask_switched(mask: Globals.Masks) -> void:
+	#print(Globals.Masks.keys()[Globals.current_mask])
 	match mask:
-		0: # None
-			# Normal Enemy Follow Speed
-			Globals.can_enemy_chase = true
+		Globals.Masks.NONE: # None
+			player.modulate = Color.WHITE
 			player.can_attack = false
 			hidden_tileset.enabled = false
-		1: # Red
-			# Fast Enemy Follow Speed
+		Globals.Masks.RED: # Red
+			player.modulate = Color.RED
 			player.can_attack = true
-			Globals.can_enemy_chase = true
 			hidden_tileset.enabled = false
-		2: # Blue
-			# No Enemy Follow
+		Globals.Masks.BLUE: # Blue
+			player.modulate = Color.BLUE
 			player.can_attack = false
 			hidden_tileset.enabled = false
-			Globals.can_enemy_chase = false
-		3: # Green
-			# Slow Enemy Follow Speed
+		Globals.Masks.GREEN: # Green
+			player.modulate = Color.GREEN
 			hidden_tileset.enabled = true
-			
 			player.can_attack = false
-			Globals.can_enemy_chase = false

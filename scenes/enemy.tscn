@@ -2,15 +2,21 @@
 
 [ext_resource type="Script" uid="uid://eitrl4f7f3hp" path="res://addons/2d_shapes/shapes/Rectangle.gd" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://cs83g7iqsdo6r" path="res://scenes/enemy.gd" id="1_md0e3"]
+[ext_resource type="Script" uid="uid://ceqpilsie3yls" path="res://addons/2d_shapes/shapes/Ellipse.gd" id="2_4ra3w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
 size = Vector2(66, 66)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_md0e3"]
-radius = 250.0
-
-[node name="Enemy" type="CharacterBody2D" unique_id=1500520149]
+[node name="Enemy" type="CharacterBody2D" unique_id=1500520149 node_paths=PackedStringArray("ellipse")]
 script = ExtResource("1_md0e3")
+ellipse = NodePath("Ellipse")
+
+[node name="Ellipse" type="Node2D" parent="." unique_id=454408466]
+visible = false
+script = ExtResource("2_4ra3w")
+size = Vector2(120, 120)
+fill_color = Color(1, 0.2917437, 0.2917437, 0.27450982)
+metadata/_custom_type_script = "uid://ceqpilsie3yls"
 
 [node name="Rectangle" type="Node2D" parent="." unique_id=256184722]
 script = ExtResource("1_7p1mj")
@@ -23,11 +29,3 @@ metadata/_custom_type_script = "uid://eitrl4f7f3hp"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1454458340]
 shape = SubResource("RectangleShape2D_md0e3")
-
-[node name="FollowRange" type="Area2D" parent="." unique_id=459164510]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FollowRange" unique_id=2066272571]
-shape = SubResource("CircleShape2D_md0e3")
-
-[connection signal="body_entered" from="FollowRange" to="." method="_on_follow_range_body_entered"]
-[connection signal="body_exited" from="FollowRange" to="." method="_on_follow_range_body_exited"]

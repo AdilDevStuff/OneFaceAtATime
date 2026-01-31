@@ -7,6 +7,11 @@ class_name Player
 @export var jump_force: float = 600.0
 @export var max_jump_limit: int = 2
 
+@export var ability_bar: ProgressBar
+@export var ability_timer: Timer
+
+@export var sprite: Rectangle
+
 # Private
 var current_speed: float
 
@@ -18,8 +23,11 @@ var can_attack: bool = false
 func _ready() -> void:
 	#Events.MaskSwitched.connect(on_mask_switched)
 	current_speed = normal_speed
+	ability_bar.max_value = ability_timer.wait_time
 
 func _physics_process(delta: float) -> void:
+	ability_bar.value = ability_timer.time_left
+	
 	movement(delta)
 	move_and_slide()
 
@@ -43,3 +51,7 @@ func gravity(delta: float) -> void:
 		velocity += get_gravity() * delta * 2
 	else:
 		jump_count = max_jump_limit
+
+func _on_collision_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemy"):
+		print("damaged")

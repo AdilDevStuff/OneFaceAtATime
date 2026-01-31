@@ -16,9 +16,32 @@ point_count = 2
 offsets = PackedFloat32Array(0.24085365, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
-[node name="Player" type="CharacterBody2D" unique_id=1007037810 groups=["player"]]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dqkch"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qlg0r"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
+size = Vector2(72, 70)
+
+[node name="Player" type="CharacterBody2D" unique_id=1007037810 node_paths=PackedStringArray("ability_bar", "ability_timer", "sprite") groups=["player"]]
 script = ExtResource("1_g2els")
+normal_speed = 400.0
 jump_force = 650.0
+ability_bar = NodePath("AbilityBar")
+ability_timer = NodePath("AbilityTimer")
+sprite = NodePath("Rectangle")
 
 [node name="Rectangle" type="Node2D" parent="." unique_id=716647370]
 script = ExtResource("3_qhqgy")
@@ -32,8 +55,12 @@ metadata/_custom_type_script = "uid://eitrl4f7f3hp"
 visible = false
 shape = SubResource("RectangleShape2D_3vyb7")
 
-[node name="SwitchingComponent" type="Node" parent="." unique_id=1396908888]
+[node name="SwitchingComponent" type="Node" parent="." unique_id=1396908888 node_paths=PackedStringArray("ability_timer", "ability_bar", "cooldown_timer", "cooldown_info") groups=["switching"]]
 script = ExtResource("3_dqkch")
+ability_timer = NodePath("../AbilityTimer")
+ability_bar = NodePath("../AbilityBar")
+cooldown_timer = NodePath("../CooldownTimer")
+cooldown_info = NodePath("../CooldownInfo")
 
 [node name="Trail" type="Line2D" parent="." unique_id=921361006]
 z_index = -1
@@ -44,3 +71,39 @@ joint_mode = 2
 script = ExtResource("4_dqkch")
 length = 20
 metadata/_custom_type_script = "uid://cgywxyffl1snf"
+
+[node name="AbilityBar" type="ProgressBar" parent="." unique_id=2063169097]
+visible = false
+offset_left = -114.0
+offset_top = -78.0
+offset_right = 114.0
+offset_bottom = -51.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_dqkch")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qlg0r")
+show_percentage = false
+
+[node name="AbilityTimer" type="Timer" parent="." unique_id=940036340]
+wait_time = 5.0
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=2040506003]
+wait_time = 2.0
+
+[node name="CooldownInfo" type="Label" parent="." unique_id=31657962]
+visible = false
+offset_left = -119.0
+offset_top = -66.0
+offset_right = 125.0
+offset_bottom = -43.0
+text = "Cooldown"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Collision" type="Area2D" parent="." unique_id=1235626946]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision" unique_id=1426782674]
+shape = SubResource("RectangleShape2D_dqkch")
+
+[connection signal="timeout" from="AbilityTimer" to="SwitchingComponent" method="_on_ability_timer_timeout"]
+[connection signal="timeout" from="CooldownTimer" to="SwitchingComponent" method="_on_cooldown_timer_timeout"]
+[connection signal="body_entered" from="Collision" to="." method="_on_collision_body_entered"]
