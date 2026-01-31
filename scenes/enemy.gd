@@ -9,6 +9,7 @@ func _ready() -> void:
 	Events.MaskSwitched.connect(on_mask_switched)
 
 func on_mask_switched(mask) -> void:
+	#if Globals.current_mask != 2:
 	match mask:
 		0: # None
 			current_damage = 50

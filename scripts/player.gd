@@ -81,32 +81,33 @@ func apply_knockback(from_position: Vector2) -> void:
 
 	velocity.x = knockback_dir * (knockback_force + abs(velocity.x) * 0.4)
 	
-	# Vertical pop
 	velocity.y = -knockback_up_force
 	
 	jump_count = max_jump_limit - 1
 	
-	# Briefly lock control
 	control_locked = true
 	get_tree().create_timer(knockback_control_lock_time).timeout.connect(
 		func(): control_locked = false
 	)
 
 func _on_damaged(damage: int) -> void:
-	current_health -= damage
-	$AnimationPlayer.play("flash")
+	if Globals.can_damage_player:
+		current_health -= damage
+		$AnimationPlayer.play("flash")
 
 func _on_killed() -> void:
-	get_tree().call_deferred("reload_current_scene")
+	SceneTransition.reload_scene()
 
 func _on_collision_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
-		apply_knockback(body.global_position)
-		Events.Damaged.emit(body.current_damage)
+		if Globals.can_damage_player:
+			apply_knockback(body.global_position)
+			Events.Damaged.emit(body.current_damage)
 	if body.is_in_group("lava"):
-		apply_knockback(body.global_position)
-		Events.Damaged.emit(25)
-		#get_tree().call_deferred("reload_current_scene")
+		if Globals.can_damage_player:
+			apply_knockback(body.global_position)
+			Events.Damaged.emit(25)
 	if body.is_in_group("spikes"):
-		apply_knockback(body.global_position)
-		Events.Damaged.emit(25)
+		if Globals.can_damage_player:
+			apply_knockback(body.global_position)
+			Events.Damaged.emit(25)
