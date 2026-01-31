@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://blkx3xvx8c6l8"]
+
+[ext_resource type="Script" uid="uid://eitrl4f7f3hp" path="res://addons/2d_shapes/shapes/Rectangle.gd" id="1_7p1mj"]
+[ext_resource type="Script" uid="uid://cs83g7iqsdo6r" path="res://scenes/enemy.gd" id="1_md0e3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
+size = Vector2(66, 66)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_md0e3"]
+radius = 250.0
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1500520149]
+script = ExtResource("1_md0e3")
+
+[node name="Rectangle" type="Node2D" parent="." unique_id=256184722]
+script = ExtResource("1_7p1mj")
+size = Vector2(64, 64)
+corner_radius = 5.0
+style = 2
+outline_width = 3
+fill_color = Color(1, 0.26543766, 0.26543766, 1)
+metadata/_custom_type_script = "uid://eitrl4f7f3hp"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1454458340]
+shape = SubResource("RectangleShape2D_md0e3")
+
+[node name="FollowRange" type="Area2D" parent="." unique_id=459164510]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FollowRange" unique_id=2066272571]
+shape = SubResource("CircleShape2D_md0e3")
+
+[connection signal="body_entered" from="FollowRange" to="." method="_on_follow_range_body_entered"]
+[connection signal="body_exited" from="FollowRange" to="." method="_on_follow_range_body_exited"]

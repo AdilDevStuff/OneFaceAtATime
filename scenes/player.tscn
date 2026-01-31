@@ -16,9 +16,9 @@ point_count = 2
 offsets = PackedFloat32Array(0.24085365, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
-[node name="Player" type="CharacterBody2D" unique_id=1007037810]
+[node name="Player" type="CharacterBody2D" unique_id=1007037810 groups=["player"]]
 script = ExtResource("1_g2els")
-speed = 400.0
+jump_force = 650.0
 
 [node name="Rectangle" type="Node2D" parent="." unique_id=716647370]
 script = ExtResource("3_qhqgy")

@@ -1,14 +1,23 @@
 extends CharacterBody2D
+class_name Player
 
 # Exported
-@export var speed: float = 300.0
+@export var normal_speed: float = 300.0
+#@export var slow_speed: float = 150.0
 @export var jump_force: float = 600.0
 @export var max_jump_limit: int = 2
 
 # Private
+var current_speed: float
+
 var jump_count: int = 0
 
 var is_grounded: bool = false
+var can_attack: bool = false
+
+func _ready() -> void:
+	#Events.MaskSwitched.connect(on_mask_switched)
+	current_speed = normal_speed
 
 func _physics_process(delta: float) -> void:
 	movement(delta)
@@ -20,9 +29,9 @@ func movement(delta: float) -> void:
 	
 	var direction := Input.get_axis("left", "right")
 	if direction:
-		velocity.x = direction * speed
+		velocity.x = direction * current_speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.x = move_toward(velocity.x, 0, current_speed)
 
 func jump() -> void:
 	if Input.is_action_just_pressed("jump") and jump_count > 0:

@@ -29,6 +29,10 @@ window/stretch/aspect="expand"
 
 enabled=PackedStringArray("res://addons/2d_shapes/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/trail_2d/plugin.cfg")
 
+[global_group]
+
+player=""
+
 [input]
 
 left={
