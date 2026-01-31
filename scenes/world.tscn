@@ -1,6 +1,8 @@
 [gd_scene format=4 uid="uid://84l5kyexw5o2"]
 
 [ext_resource type="PackedScene" uid="uid://dkk6wx1c02l8y" path="res://scenes/player.tscn" id="1_nnsk1"]
+[ext_resource type="Texture2D" uid="uid://bl3tsvfgplek5" path="res://icon.svg" id="2_4mrxx"]
+[ext_resource type="Script" uid="uid://b2jrodpd2i1c8" path="res://addons/RadialMenu/RadialMenu.gd" id="2_i7141"]
 [ext_resource type="Script" uid="uid://b3hprairb2cbt" path="res://scripts/game_manager.gd" id="2_rwgxs"]
 [ext_resource type="Texture2D" uid="uid://bjdfmnuel0svb" path="res://assets/Tileset.png" id="3_4wyf3"]
 [ext_resource type="Script" uid="uid://d1rgggqpo1jtk" path="res://scripts/game_ui.gd" id="4_k0juu"]
@@ -381,7 +383,7 @@ point_count = 2
 
 [node name="UserInterface" type="CanvasLayer" parent="." unique_id=754919433]
 
-[node name="GameUI" type="Control" parent="UserInterface" unique_id=1747386565 node_paths=PackedStringArray("current_active_mask_label", "game_manager")]
+[node name="GameUI" type="Control" parent="UserInterface" unique_id=1747386565 node_paths=PackedStringArray("current_active_mask_label", "game_manager", "radial_menu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -389,8 +391,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_k0juu")
+none_texture = ExtResource("2_4mrxx")
+red_texture = ExtResource("2_4mrxx")
+blue_texture = ExtResource("2_4mrxx")
+green_texture = ExtResource("2_4mrxx")
 current_active_mask_label = NodePath("Label")
 game_manager = NodePath("../../GameManager")
+radial_menu = NodePath("RadialMenu")
 
 [node name="Label" type="Label" parent="UserInterface/GameUI" unique_id=714711454]
 layout_mode = 0
@@ -400,6 +407,17 @@ offset_right = 446.0
 offset_bottom = 83.0
 text = "Current Mask: Red"
 label_settings = SubResource("LabelSettings_k0juu")
+
+[node name="RadialMenu" type="Control" parent="UserInterface/GameUI" unique_id=1746031354]
+custom_minimum_size = Vector2(300, 222.26306)
+anchors_preset = 0
+offset_right = 300.0
+offset_bottom = 222.26306
+pivot_offset = Vector2(150, 150)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("2_i7141")
+icon_scale = 0.2
 
 [node name="Player" parent="." unique_id=1007037810 instance=ExtResource("1_nnsk1")]
 position = Vector2(604, 367)
@@ -435,3 +453,5 @@ tile_set = SubResource("TileSet_i7141")
 
 [node name="EnemyPath" parent="." unique_id=329043789 instance=ExtResource("5_71j4m")]
 curve = SubResource("Curve2D_71j4m")
+
+[connection signal="item_selected" from="UserInterface/GameUI/RadialMenu" to="UserInterface/GameUI" method="_on_radial_menu_item_selected"]

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://8gio8223puqr"]
+
+[ext_resource type="Script" uid="uid://22c4vb4188jc" path="res://addons/RadialMenu/Demo/RadialDemo2.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://iopwhmejcr8b" path="res://addons/RadialMenu/RadialMenu.tscn" id="2_royl4"]
+[ext_resource type="Theme" path="res://addons/RadialMenu/light_default_theme.tres" id="3_icj7k"]
+
+[node name="Node2D" type="Node2D" unique_id=648643199]
+script = ExtResource("2")
+
+[node name="RadialMenu" parent="." unique_id=603256807 instance=ExtResource("2_royl4")]
+visible = false
+custom_minimum_size = Vector2(300, 222.26306)
+default_theme = ExtResource("3_icj7k")
