@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Enemy
 
-var current_damage: int
+var current_damage: int = 50
 
 @export var ellipse: Ellipse
 

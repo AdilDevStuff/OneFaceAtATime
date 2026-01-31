@@ -7,6 +7,9 @@ class_name Player
 @export var jump_force: float = 600.0
 @export var max_jump_limit: int = 2
 
+@export var max_health: int = 100
+var current_health: int = 0
+
 @export var ability_bar: ProgressBar
 @export var ability_timer: Timer
 
@@ -21,12 +24,18 @@ var is_grounded: bool = false
 var can_attack: bool = false
 
 func _ready() -> void:
-	#Events.MaskSwitched.connect(on_mask_switched)
+	Events.Damaged.connect(_on_damaged)
+	Events.Killed.connect(_on_killed)
+	
+	current_health = max_health
 	current_speed = normal_speed
 	ability_bar.max_value = ability_timer.wait_time
 
 func _physics_process(delta: float) -> void:
 	ability_bar.value = ability_timer.time_left
+	
+	if current_health <= 0:
+		Events.Killed.emit()
 	
 	movement(delta)
 	move_and_slide()
@@ -52,6 +61,15 @@ func gravity(delta: float) -> void:
 	else:
 		jump_count = max_jump_limit
 
+func _on_damaged(damage: int) -> void:
+	current_health -= damage
+	print(damage)
+
+func _on_killed() -> void:
+	get_tree().call_deferred("reload_current_scene")
+
 func _on_collision_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
-		print("damaged")
+		Events.Damaged.emit(body.current_damage)
+	if body.is_in_group("lava"):
+		get_tree().call_deferred("reload_current_scene")

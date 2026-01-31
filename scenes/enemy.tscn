@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
 size = Vector2(66, 66)
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1500520149 node_paths=PackedStringArray("ellipse")]
+[node name="Enemy" type="CharacterBody2D" unique_id=1500520149 node_paths=PackedStringArray("ellipse") groups=["enemy"]]
 script = ExtResource("1_md0e3")
 ellipse = NodePath("Ellipse")
 

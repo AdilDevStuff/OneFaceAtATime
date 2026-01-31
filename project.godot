@@ -32,6 +32,8 @@ enabled=PackedStringArray("res://addons/2d_shapes/plugin.cfg", "res://addons/scr
 [global_group]
 
 player=""
+enemy=""
+lava=""
 
 [input]
 
