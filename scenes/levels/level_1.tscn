@@ -1,16 +1,16 @@
 [gd_scene format=4 uid="uid://84l5kyexw5o2"]
 
-[ext_resource type="PackedScene" uid="uid://dkk6wx1c02l8y" path="res://scenes/player.tscn" id="1_nnsk1"]
-[ext_resource type="Texture2D" uid="uid://1rjsrrgoq37b" path="res://assets/assets_None.png" id="2_e3hyu"]
-[ext_resource type="Script" uid="uid://b2jrodpd2i1c8" path="res://addons/RadialMenu/RadialMenu.gd" id="2_i7141"]
-[ext_resource type="Script" uid="uid://b3hprairb2cbt" path="res://scripts/game_manager.gd" id="2_rwgxs"]
-[ext_resource type="Texture2D" uid="uid://bjdfmnuel0svb" path="res://assets/Tileset.png" id="3_4wyf3"]
-[ext_resource type="Texture2D" uid="uid://dnh0wk05r4c1j" path="res://assets/assets_Red.png" id="3_q5onr"]
-[ext_resource type="Texture2D" uid="uid://23t4kt4vlsfq" path="res://assets/assets_Blue.png" id="4_jhx03"]
-[ext_resource type="Script" uid="uid://d1rgggqpo1jtk" path="res://scripts/game_ui.gd" id="4_k0juu"]
-[ext_resource type="PackedScene" uid="uid://c5q6tspxawt3e" path="res://scenes/enemy_path.tscn" id="5_71j4m"]
-[ext_resource type="Texture2D" uid="uid://c5gvc0dw4gfdw" path="res://assets/assets_Green.png" id="5_o8fc1"]
-[ext_resource type="Texture2D" uid="uid://c3nbyp75p4gjk" path="res://assets/spike_tile.png" id="5_qfnet"]
+[ext_resource type="Script" uid="uid://d1rgggqpo1jtk" path="res://scripts/game_ui.gd" id="1_excbq"]
+[ext_resource type="Texture2D" uid="uid://1rjsrrgoq37b" path="res://assets/assets_None.png" id="2_iav0o"]
+[ext_resource type="Texture2D" uid="uid://dnh0wk05r4c1j" path="res://assets/assets_Red.png" id="3_dnkej"]
+[ext_resource type="Texture2D" uid="uid://23t4kt4vlsfq" path="res://assets/assets_Blue.png" id="4_mm8aj"]
+[ext_resource type="Texture2D" uid="uid://c5gvc0dw4gfdw" path="res://assets/assets_Green.png" id="5_wtwp4"]
+[ext_resource type="Script" uid="uid://b2jrodpd2i1c8" path="res://addons/RadialMenu/RadialMenu.gd" id="6_iwr0g"]
+[ext_resource type="PackedScene" uid="uid://dkk6wx1c02l8y" path="res://scenes/player.tscn" id="7_bahl2"]
+[ext_resource type="Script" uid="uid://b3hprairb2cbt" path="res://scripts/game_manager.gd" id="8_np2pn"]
+[ext_resource type="Texture2D" uid="uid://bjdfmnuel0svb" path="res://assets/Tileset.png" id="9_v6ha0"]
+[ext_resource type="Texture2D" uid="uid://c3nbyp75p4gjk" path="res://assets/spike_tile.png" id="10_gmpev"]
+[ext_resource type="PackedScene" uid="uid://c5q6tspxawt3e" path="res://scenes/enemy_path.tscn" id="11_mkypq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_k0juu"]
 font_size = 48
@@ -18,7 +18,7 @@ outline_size = 10
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_71j4m"]
-texture = ExtResource("3_4wyf3")
+texture = ExtResource("9_v6ha0")
 texture_region_size = Vector2i(64, 64)
 0:1/0 = 0
 0:1/0/terrain_set = 0
@@ -106,7 +106,7 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_71j4m")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k0juu"]
-texture = ExtResource("3_4wyf3")
+texture = ExtResource("9_v6ha0")
 texture_region_size = Vector2i(64, 64)
 0:1/0 = 0
 0:1/0/terrain_set = 0
@@ -194,7 +194,7 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_k0juu")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wyf3"]
-texture = ExtResource("3_4wyf3")
+texture = ExtResource("9_v6ha0")
 texture_region_size = Vector2i(64, 64)
 0:1/0 = 0
 0:1/0/terrain_set = 0
@@ -282,7 +282,7 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_4wyf3")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qfnet"]
-texture = ExtResource("3_4wyf3")
+texture = ExtResource("9_v6ha0")
 texture_region_size = Vector2i(64, 64)
 0:1/0 = 0
 0:1/0/terrain_set = 0
@@ -362,7 +362,7 @@ texture_region_size = Vector2i(64, 64)
 0:0/0/terrains_peering_bit/bottom_side = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i7141"]
-texture = ExtResource("5_qfnet")
+texture = ExtResource("10_gmpev")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -388,6 +388,9 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_excbq"]
+size = Vector2(232, 256)
+
 [node name="World" type="Node2D" unique_id=1683291214]
 
 [node name="UserInterface" type="CanvasLayer" parent="." unique_id=754919433]
@@ -399,11 +402,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("4_k0juu")
-none_texture = ExtResource("2_e3hyu")
-red_texture = ExtResource("3_q5onr")
-blue_texture = ExtResource("4_jhx03")
-green_texture = ExtResource("5_o8fc1")
+script = ExtResource("1_excbq")
+none_texture = ExtResource("2_iav0o")
+red_texture = ExtResource("3_dnkej")
+blue_texture = ExtResource("4_mm8aj")
+green_texture = ExtResource("5_wtwp4")
 current_active_mask_label = NodePath("Label")
 game_manager = NodePath("../../GameManager")
 radial_menu = NodePath("RadialMenu")
@@ -426,10 +429,10 @@ offset_bottom = 222.26306
 pivot_offset = Vector2(150, 150)
 size_flags_horizontal = 0
 size_flags_vertical = 0
-script = ExtResource("2_i7141")
+script = ExtResource("6_iwr0g")
 icon_scale = 0.2
 
-[node name="Player" parent="." unique_id=1007037810 instance=ExtResource("1_nnsk1")]
+[node name="Player" parent="." unique_id=1007037810 instance=ExtResource("7_bahl2")]
 position = Vector2(604, 367)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1914056301]
@@ -438,9 +441,11 @@ limit_left = 0
 position_smoothing_enabled = true
 editor_draw_limits = true
 
-[node name="GameManager" type="Node" parent="." unique_id=201982653 node_paths=PackedStringArray("hidden_tileset")]
-script = ExtResource("2_rwgxs")
+[node name="GameManager" type="Node" parent="." unique_id=201982653 node_paths=PackedStringArray("hidden_tileset", "level_end")]
+script = ExtResource("8_np2pn")
+next_level_path = "res://scenes/levels/level_2.tscn"
 hidden_tileset = NodePath("../HiddenPlatforms")
+level_end = NodePath("../LevelEnd")
 
 [node name="Lava" type="TileMapLayer" parent="." unique_id=737266222 groups=["lava"]]
 modulate = Color(1, 0.2960341, 0, 1)
@@ -461,13 +466,20 @@ tile_set = SubResource("TileSet_k0juu")
 tile_map_data = PackedByteArray("AABtAA0AAQAAAAAAAABuAA0AAQAAAAAAAABvAA0AAQAAAAAAAACLAA0AAQAAAAAAAACKAA0AAQAAAAAAAACJAA0AAQAAAAAAAACXAA0AAQAAAAAAAACYAA0AAQAAAAAAAACZAA0AAQAAAAAAAACaAA0AAQAAAAAAAACbAA0AAQAAAAAAAAA9AAMAAQAAAAAAAAA8AAMAAQAAAAAAAAA7AAMAAQAAAAAAAAA6AAMAAQAAAAAAAAA5AAMAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_i7141")
 
-[node name="EnemyPath" parent="." unique_id=329043789 instance=ExtResource("5_71j4m")]
+[node name="EnemyPath" parent="." unique_id=329043789 instance=ExtResource("11_mkypq")]
 position = Vector2(1192, -320)
 curve = SubResource("Curve2D_71j4m")
 
-[node name="EnemyPath2" parent="." unique_id=928499031 instance=ExtResource("5_71j4m")]
+[node name="EnemyPath2" parent="." unique_id=928499031 instance=ExtResource("11_mkypq")]
 position = Vector2(2504, 0)
 curve = SubResource("Curve2D_4mrxx")
+
+[node name="LevelEnd" type="Area2D" parent="." unique_id=1075614337]
+position = Vector2(5126, 323)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEnd" unique_id=1530829032]
+position = Vector2(14, -3)
+shape = SubResource("RectangleShape2D_excbq")
 
 [connection signal="item_selected" from="UserInterface/GameUI/RadialMenu" to="UserInterface/GameUI" method="_on_radial_menu_item_selected"]
 [connection signal="menu_closed" from="UserInterface/GameUI/RadialMenu" to="UserInterface/GameUI" method="_on_radial_menu_menu_closed"]

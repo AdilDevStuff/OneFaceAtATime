@@ -5,7 +5,7 @@ extends CanvasLayer
 func change_scene(target: String) -> void:
 	trans_anim.play("fade")
 	await trans_anim.animation_finished
-	get_tree().change_scene(target)
+	get_tree().change_scene_to_file(target)
 	trans_anim.play_backwards("fade")
 
 func reload_scene() -> void:

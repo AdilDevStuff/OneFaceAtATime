@@ -12,7 +12,7 @@ class_name GameUI
 
 func _ready() -> void:
 	radial_menu.set_items([])
-	radial_menu.add_icon_item(none_texture, "None", 0)
+	#radial_menu.add_icon_item(none_texture, "None", 0)
 	radial_menu.add_icon_item(red_texture, "Red", 1)
 	radial_menu.add_icon_item(blue_texture, "Blue", 2)
 	radial_menu.add_icon_item(green_texture, "Green", 3)
