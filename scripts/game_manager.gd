@@ -6,6 +6,7 @@ class_name GameManager
 @onready var player: Player = get_tree().get_first_node_in_group("player")
 
 func _ready() -> void:
+	Engine.time_scale = 1.0
 	hidden_tileset.enabled = false
 	Events.MaskSwitched.connect(on_mask_switched)
 

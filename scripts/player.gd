@@ -96,7 +96,8 @@ func _on_damaged(damage: int) -> void:
 		$AnimationPlayer.play("flash")
 
 func _on_killed() -> void:
-	SceneTransition.reload_scene()
+	if get_tree().current_scene != null:
+		SceneTransition.reload_scene()
 
 func _on_collision_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
