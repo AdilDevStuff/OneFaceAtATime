@@ -11,8 +11,10 @@ class_name GameManager
 func _ready() -> void:
 	Engine.time_scale = 1.0
 	get_tree().call_group("switching", "switch_mask", Globals.Masks.NONE)
+	Globals.can_switch = true
 	hidden_tileset.enabled = false
-	
+	Globals.can_damage_player = true
+
 	Events.mask_switched.connect(on_mask_switched)
 	level_end.body_entered.connect(_on_level_end_body_entered)
 

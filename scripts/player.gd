@@ -123,7 +123,7 @@ func _on_collision_body_entered(body: Node2D) -> void:
 	if body.is_in_group("lava"):
 		if Globals.can_damage_player:
 			apply_knockback(body.global_position)
-			Events.damaged.emit(25)
+			Events.damaged.emit(100)
 	if body.is_in_group("spikes"):
 		if Globals.can_damage_player:
 			apply_knockback(body.global_position)

@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c64ltd2c17qc5" path="res://assets/player_switch_particles.png" id="7_fjrip"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vyb7"]
-size = Vector2(64, 64)
+size = Vector2(62, 62)
 
 [sub_resource type="Curve" id="Curve_qlg0r"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -36,7 +36,7 @@ border_width_bottom = 3
 border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
-size = Vector2(72, 70)
+size = Vector2(68, 68)
 
 [sub_resource type="Curve" id="Curve_fjrip"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5562914, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -257,7 +257,6 @@ fill_color = Color(1, 1, 1, 0.39215687)
 metadata/_custom_type_script = "uid://ceqpilsie3yls"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=41957308]
-visible = false
 shape = SubResource("RectangleShape2D_3vyb7")
 
 [node name="SwitchingComponent" type="Node" parent="." unique_id=1396908888 node_paths=PackedStringArray("ability_timer", "ability_bar", "cooldown_timer", "cooldown_info", "animation_player", "switch_particles") groups=["switching"]]
@@ -319,6 +318,7 @@ texture = ExtResource("6_tuyoq")
 one_shot = true
 explosiveness = 1.0
 randomness = 1.0
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_qlg0r")
 
 [node name="SwitchParticles" type="GPUParticles2D" parent="." unique_id=888601029]
@@ -328,6 +328,7 @@ one_shot = true
 speed_scale = 2.0
 explosiveness = 1.0
 randomness = 1.0
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_qlg0r")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1861513500]

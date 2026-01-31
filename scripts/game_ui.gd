@@ -22,7 +22,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	current_active_mask_label.text = "Mask: %s" % Globals.Masks.keys()[Globals.current_mask].capitalize()
 	
-	if Input.is_action_pressed("open_radial"):
+	if Input.is_action_pressed("open_radial") and Globals.can_switch:
 		Engine.time_scale = 0.2
 		radial_menu.open_menu(get_viewport_rect().size / 2)
 

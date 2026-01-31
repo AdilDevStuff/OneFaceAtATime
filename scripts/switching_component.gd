@@ -5,14 +5,13 @@ class_name SwitchingComponent
 @export var ability_bar: ProgressBar
 @export var cooldown_timer: Timer
 
-var can_switch: bool = true
 
 @export var cooldown_info: Label
 @export var animation_player: AnimationPlayer
 @export var switch_particles: GPUParticles2D
 
 func _input(_event: InputEvent) -> void:
-	if can_switch:
+	if Globals.can_switch:
 		if Input.is_action_just_pressed("switch_none"):
 			switch_mask(Globals.Masks.NONE)
 		elif Input.is_action_just_pressed("switch_red"):
@@ -45,7 +44,7 @@ func switch_mask(selected_mask: Globals.Masks) -> void:
 func _on_ability_timer_timeout() -> void:
 	cooldown_info.show()
 
-	can_switch = false
+	Globals.can_switch = false
 	ability_bar.hide()
 	ability_timer.stop()
 	switch_mask(Globals.Masks.NONE)
@@ -54,4 +53,4 @@ func _on_ability_timer_timeout() -> void:
 
 func _on_cooldown_timer_timeout() -> void:
 	cooldown_info.hide()
-	can_switch = true
+	Globals.can_switch = true
