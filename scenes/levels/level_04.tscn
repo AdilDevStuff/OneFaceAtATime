@@ -11,6 +11,9 @@ point_count = 2
 
 [node name="Level04" unique_id=1683291214 instance=ExtResource("1_31sm7")]
 
+[node name="GameManager" parent="." index="1" unique_id=201982653]
+next_level_path = "res://scenes/main_menu.tscn"
+
 [node name="Player" parent="." index="2" unique_id=1007037810]
 position = Vector2(122, 297)
 

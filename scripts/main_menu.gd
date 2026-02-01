@@ -35,4 +35,3 @@ func _on_exit_pressed() -> void:
 
 func _on_face_text_timer_timeout() -> void:
 	change_color_smooth()
-	#face_label.label_settings.font_color = colors.pick_random()

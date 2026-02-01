@@ -30,6 +30,7 @@ func _on_health_changed(health: int) -> void:
 	health_bar.value = health
 
 func _on_radial_menu_item_selected(id: Variant, _position: Variant) -> void:
+	SoundManager.switch_sfx.play()
 	get_tree().call_group("switching", "switch_mask", id)
 	Engine.time_scale = 1.0
 

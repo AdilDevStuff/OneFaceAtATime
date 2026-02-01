@@ -68,6 +68,7 @@ func movement(delta: float) -> void:
 
 func jump() -> void:
 	if Input.is_action_just_pressed("jump") and jump_count > 0:
+		SoundManager.jump_sfx.play()
 		velocity.y = -jump_force
 		var tween := create_tween()
 		tween.tween_property(sprite, "rotation_degrees", snapped(sprite.rotation_degrees + 90.0 * direction, 90.0), 0.15)
@@ -118,13 +119,16 @@ func _on_killed() -> void:
 func _on_collision_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
 		if Globals.can_damage_player:
+			SoundManager.hurt_sfx.play()
 			apply_knockback(body.global_position)
 			Events.damaged.emit(body.current_damage)
 	if body.is_in_group("lava"):
 		if Globals.can_damage_player:
+			SoundManager.death_sfx.play()
 			apply_knockback(body.global_position)
 			Events.damaged.emit(100)
 	if body.is_in_group("spikes"):
 		if Globals.can_damage_player:
+			SoundManager.hurt_sfx.play()
 			apply_knockback(body.global_position)
 			Events.damaged.emit(25)

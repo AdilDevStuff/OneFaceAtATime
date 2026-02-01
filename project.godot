@@ -13,13 +13,14 @@ config_version=5
 config/name="GlobalGameJam26"
 run/main_scene="uid://dq5dgm1ngbw0b"
 config/features=PackedStringArray("4.6")
-config/icon="res://icon.svg"
+config/icon="uid://d0ts7j541f7yd"
 
 [autoload]
 
 Events="*uid://kwjbn3aqk62g"
 Globals="*uid://cdmghntd1u56b"
 SceneTransition="*uid://c883h12vb0uo8"
+SoundManager="*uid://bfsyesyft28dd"
 
 [display]
 

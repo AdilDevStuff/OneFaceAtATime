@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bfsyesyft28dd"]
+
+[ext_resource type="Script" uid="uid://bf2qab7axsdpq" path="res://autoloads/sound_manager.gd" id="1_4udv5"]
+[ext_resource type="AudioStream" uid="uid://72wygbrl23d7" path="res://assets/sound_fx/sfx_movement_jump9.wav" id="2_8ikdl"]
+[ext_resource type="AudioStream" uid="uid://rq240tu0ol7w" path="res://assets/sound_fx/sfx_exp_short_hard1.wav" id="2_xy5rq"]
+[ext_resource type="AudioStream" uid="uid://djgd8o5qjofyi" path="res://assets/sound_fx/sfx_movement_portal3.wav" id="3_vwtpm"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8ikdl"]
+random_pitch = 1.0116194
+streams_count = 1
+stream_0/stream = ExtResource("2_xy5rq")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vwtpm"]
+random_pitch = 1.0116194
+streams_count = 1
+stream_0/stream = ExtResource("2_xy5rq")
+
+[node name="SoundManager" type="Node" unique_id=406561184 node_paths=PackedStringArray("jump_sfx", "switch_sfx", "death_sfx", "hurt_sfx")]
+script = ExtResource("1_4udv5")
+jump_sfx = NodePath("JumpSfx")
+switch_sfx = NodePath("Switch")
+death_sfx = NodePath("DeathSfx")
+hurt_sfx = NodePath("HurtSfx")
+
+[node name="JumpSfx" type="AudioStreamPlayer" parent="." unique_id=599912214]
+stream = ExtResource("2_8ikdl")
+volume_db = -5.0
+pitch_scale = 1.1
+
+[node name="Switch" type="AudioStreamPlayer" parent="." unique_id=1575864346]
+stream = ExtResource("3_vwtpm")
+volume_db = -5.0
+pitch_scale = 2.0
+
+[node name="DeathSfx" type="AudioStreamPlayer" parent="." unique_id=1015712083]
+stream = SubResource("AudioStreamRandomizer_8ikdl")
+volume_db = -5.0
+pitch_scale = 2.0
+
+[node name="HurtSfx" type="AudioStreamPlayer" parent="." unique_id=1492994241]
+stream = SubResource("AudioStreamRandomizer_vwtpm")
+volume_db = -6.0
+pitch_scale = 4.0
