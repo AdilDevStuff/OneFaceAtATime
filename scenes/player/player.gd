@@ -55,7 +55,10 @@ func _physics_process(delta: float) -> void:
 
 func movement(delta: float) -> void:
 	gravity(delta)
-	jump()
+	
+	if Input.is_action_just_pressed("jump") or MobileInput.jump_pressed:
+		jump()
+		MobileInput.jump_pressed = false
 	
 	if control_locked:
 		return
@@ -67,7 +70,7 @@ func movement(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, current_speed)
 
 func jump() -> void:
-	if Input.is_action_just_pressed("jump") and jump_count > 0:
+	if jump_count > 0:
 		SoundManager.jump_sfx.play()
 		velocity.y = -jump_force
 		var tween := create_tween()

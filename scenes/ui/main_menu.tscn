@@ -42,7 +42,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1g8jr")
-colors = Array[Color]([Color(1, 1, 1, 1), Color(1, 0.29411766, 0.29411766, 1), Color(0.34509805, 0.46666667, 1, 1), Color(0.54901963, 1, 0.34509805, 1)])
+colors = Array[Color]([Color(1, 1, 1, 1), Color(1, 0.29411766, 0.29411766, 1), Color(0.40392157, 0.7019608, 1, 1), Color(0.54901963, 1, 0.34509805, 1)])
 buttons = NodePath("Buttons")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1818329630]

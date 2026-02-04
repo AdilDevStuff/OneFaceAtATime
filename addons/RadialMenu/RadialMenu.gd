@@ -102,6 +102,9 @@ var is_submenu = false					# true for submenus
 var selected = -1						# currently selected menu item
 var state = MenuState.closed			# state of the menu
 
+var touch_active := false
+var touch_position := Vector2.ZERO
+
 var center_offset = null				# offset of the arc center from top left
 var orig_item_angle = 0					# backup value for animation
 var msecs_at_opened = 0					# msecs since start when menu openeed
@@ -202,6 +205,25 @@ func _input(event):
 func _radial_input(event):
 	if not visible:
 		return
+	
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			touch_active = true
+			touch_position = event.position
+			set_selected_item(get_selected_by_touch())
+			get_viewport().set_input_as_handled()
+		else:
+			touch_active = false
+			activate_selected()
+			get_viewport().set_input_as_handled()
+		return
+
+	elif event is InputEventScreenDrag and touch_active:
+		touch_position = event.position
+		set_selected_item(get_selected_by_touch())
+		get_viewport().set_input_as_handled()
+		return
+	
 	if state == MenuState.opening or state == MenuState.closing:
 		get_viewport().set_input_as_handled()
 		return
@@ -220,7 +242,17 @@ func _radial_input(event):
 	else:
 		_handle_actions(event)
 
+func get_selected_by_touch():
+	var local_pos = touch_position - global_position - center_offset
+	var lsq = local_pos.length_squared()
 
+	var inner_limit = min((radius - width) * (radius - width), 400)
+	var outer_limit = (radius + width * outside_selection_factor) ** 2
+
+	if lsq < inner_limit or lsq > outer_limit:
+		return -1
+
+	return get_itemindex_from_vector(local_pos)
 
 
 func is_wheel_button(event):

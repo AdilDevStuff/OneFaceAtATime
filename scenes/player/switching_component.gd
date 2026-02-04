@@ -11,7 +11,7 @@ class_name SwitchingComponent
 @export var switch_particles: GPUParticles2D
 
 func _input(_event: InputEvent) -> void:
-	if Globals.can_switch and Engine.is_editor_hint():
+	if Globals.can_switch:
 		if Input.is_action_just_pressed("switch_none"):
 			switch_mask(Globals.Masks.NONE)
 		elif Input.is_action_just_pressed("switch_red"):

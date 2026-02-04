@@ -13,7 +13,7 @@ point_count = 2
 [node name="TutorialLevel01" unique_id=1683291214 instance=ExtResource("1_ogcvy")]
 
 [node name="GameManager" parent="." index="1" unique_id=201982653]
-next_level_path = "res://scenes/levels/tutorial_level_02.tscn"
+next_level_path = "uid://c5eg2w8d8r7ta"
 
 [node name="Player" parent="." index="2" unique_id=1007037810]
 position = Vector2(215, 361)
@@ -34,7 +34,7 @@ position = Vector2(2536, -32)
 curve = SubResource("Curve2D_6iamk")
 
 [node name="LevelEnd" parent="." index="5" unique_id=1075614337]
-position = Vector2(3520, 328)
+position = Vector2(3520, 325)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" parent="LevelEnd" index="1" unique_id=1530829032]

@@ -21,6 +21,7 @@ Events="*uid://kwjbn3aqk62g"
 Globals="*uid://cdmghntd1u56b"
 SceneTransition="*uid://c883h12vb0uo8"
 SoundManager="*uid://bfsyesyft28dd"
+MobileInput="*uid://doer7m4i2xrkq"
 
 [display]
 
@@ -29,7 +30,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/2d_shapes/plugin.cfg", "res://addons/RadialMenu/plugin.cfg", "res://addons/animatedbutton/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/trail_2d/plugin.cfg")
+enabled=PackedStringArray("res://addons/2d_shapes/plugin.cfg", "res://addons/RadialMenu/plugin.cfg", "res://addons/animatedbutton/plugin.cfg", "res://addons/joystick_plugin/plugin.cfg", "res://addons/multi_touchscreenbutton/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/trail_2d/plugin.cfg")
 
 [global_group]
 
@@ -88,6 +89,10 @@ open_radial={
 ]
 }
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [layer_names]
 
 2d_physics/layer_1="player"
@@ -100,4 +105,5 @@ open_radial={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0.20405686, 0.20405686, 0.20405686, 1)

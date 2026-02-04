@@ -54,4 +54,3 @@ func end_drag(undo_redo: EditorUndoRedoManager):
 	undo_redo.add_undo_method(shape, "generate_geometry")
 	
 	undo_redo.commit_action()
-

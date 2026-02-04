@@ -35,4 +35,3 @@ func end_drag(undo_redo: EditorUndoRedoManager) -> void:
 
 func on_shift_pressed(is_pressed: bool) -> void:
 	pass
-

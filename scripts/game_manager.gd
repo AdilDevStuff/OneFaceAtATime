@@ -1,7 +1,7 @@
 extends Node
 class_name GameManager
 
-@export_file_path("*.tscn") var next_level_path: String
+@export_file("*.tscn") var next_level_path: String
 
 @export var blue_color: Color = Color("5877ffff")
 @export var green_color: Color = Color("8cff58ff")
@@ -63,4 +63,6 @@ func on_mask_switched(mask: Globals.Masks) -> void:
 
 func _on_level_end_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
+		Globals.new_tween(player, "scale", Vector2.ONE * 0.001, 0.2)
+		SoundManager.level_complete_sfx.play()
 		SceneTransition.change_scene(next_level_path)

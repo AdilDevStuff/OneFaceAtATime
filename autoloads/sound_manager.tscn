@@ -4,6 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://72wygbrl23d7" path="res://assets/sound_fx/sfx_movement_jump9.wav" id="2_8ikdl"]
 [ext_resource type="AudioStream" uid="uid://rq240tu0ol7w" path="res://assets/sound_fx/sfx_exp_short_hard1.wav" id="2_xy5rq"]
 [ext_resource type="AudioStream" uid="uid://djgd8o5qjofyi" path="res://assets/sound_fx/sfx_movement_portal3.wav" id="3_vwtpm"]
+[ext_resource type="AudioStream" uid="uid://dwqmiams5dbyh" path="res://assets/sound_fx/sfx_movement_portal1.wav" id="5_x8bxb"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8ikdl"]
 random_pitch = 1.0116194
@@ -20,13 +21,19 @@ random_pitch = 1.0116194
 streams_count = 1
 stream_0/stream = ExtResource("2_xy5rq")
 
-[node name="SoundManager" type="Node" unique_id=406561184 node_paths=PackedStringArray("jump_sfx", "switch_sfx", "death_sfx", "hurt_sfx", "cooldown_sfx")]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2flvm"]
+random_pitch = 1.0116194
+streams_count = 1
+stream_0/stream = ExtResource("5_x8bxb")
+
+[node name="SoundManager" type="Node" unique_id=406561184 node_paths=PackedStringArray("jump_sfx", "switch_sfx", "death_sfx", "hurt_sfx", "cooldown_sfx", "level_complete_sfx")]
 script = ExtResource("1_4udv5")
 jump_sfx = NodePath("JumpSfx")
 switch_sfx = NodePath("Switch")
 death_sfx = NodePath("DeathSfx")
 hurt_sfx = NodePath("HurtSfx")
 cooldown_sfx = NodePath("CooldownSFX")
+level_complete_sfx = NodePath("LevelCompleteSFX")
 
 [node name="JumpSfx" type="AudioStreamPlayer" parent="." unique_id=599912214]
 stream = ExtResource("2_8ikdl")
@@ -51,3 +58,8 @@ volume_db = -5.0
 stream = SubResource("AudioStreamRandomizer_vwtpm")
 volume_db = -6.0
 pitch_scale = 4.0
+
+[node name="LevelCompleteSFX" type="AudioStreamPlayer" parent="." unique_id=1781201970]
+stream = SubResource("AudioStreamRandomizer_2flvm")
+volume_db = -6.0
+pitch_scale = 2.0

@@ -112,4 +112,3 @@ func end_drag(undo_redo: EditorUndoRedoManager):
 
 func on_shift_pressed(is_pressed: bool):
 	keep_aspect_ratio = is_pressed
-
